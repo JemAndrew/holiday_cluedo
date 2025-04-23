@@ -1,0 +1,22 @@
+{
+    "name": "Holiday Cluedo",
+    "short_name": "Cluedo",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#FFDEE9",
+    "theme_color": "#FF4081",
+    "description": "A secret mission game for holidays!",
+    "icons": [
+      {
+        "src": "static/logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "static/logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

@@ -1,0 +1,26 @@
+<!-- mission.html (Private mission briefing page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holiday Cluedo - Mission Briefing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Holiday Cluedo - Mission Briefing</h1>
+
+  <div id="mission-container">
+    <p id="instruction-text">Loading...</p>
+    <div id="mission-details" style="display:none; margin-top: 20px;">
+      <p><strong>Your Target:</strong> <span id="target-name"></span></p>
+      <p><strong>Weapon:</strong> <span id="target-weapon"></span></p>
+      <p><strong>Location:</strong> <span id="target-location"></span></p>
+    </div>
+
+    <button onclick="handleConfirm()" style="margin-top:20px;">Confirm</button>
+  </div>
+
+  <script src="mission.js"></script>
+</body>
+</html>

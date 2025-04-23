@@ -1,0 +1,179 @@
+/* Reset default browser styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #FFDEE9, #B5FFFC);
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #FF4081;
+    font-size: 2.2rem;
+  }
+  
+  p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 10px;
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus {
+    border-color: #FF4081;
+    outline: none;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    padding-left: 5px;
+  }
+  
+  button {
+    padding: 12px 24px;
+    margin: 10px 0;
+    background-color: #00C9A7;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  button:hover {
+    background-color: #00b08a;
+    transform: translateY(-2px);
+  }
+  
+  /* Player setup container */
+  #player-setup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  #player-count-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .player-entry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    flex-wrap: wrap;
+  }
+  
+  .remove-player {
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    font-size: 18px;
+  }
+  
+  .remove-player:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Shared container styling */
+  #game-container,
+  #update-container,
+  #mission-container {
+    margin-top: 20px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  /* Victory message styling */
+  #victory-message {
+    margin-top: 20px;
+    background: #d4edda;
+    color: #155724;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #c3e6cb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  strong {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 500px) {
+    input[type="text"],
+    input[type="number"],
+    button {
+      width: 100%;
+    }
+  
+    .player-entry {
+      flex-direction: column;
+    }
+  
+    #game-container,
+    #update-container,
+    #mission-container {
+      padding: 15px;
+    }
+  }
+  

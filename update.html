@@ -1,0 +1,25 @@
+<!-- update.html (Transition screen after kill) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Holiday Cluedo - Mission Update</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Mission Update</h1>
+
+  <div id="update-container">
+    <p id="instruction-text">Loading...</p>
+    <div id="mission-details" style="display:none; margin-top: 20px;">
+      <p><strong>Your New Target:</strong> <span id="target-name"></span></p>
+      <p><strong>Weapon:</strong> <span id="target-weapon"></span></p>
+      <p><strong>Location:</strong> <span id="target-location"></span></p>
+    </div>
+    <button onclick="handleConfirm()">Confirm</button>
+  </div>
+
+  <script src="update.js"></script>
+</body>
+</html>

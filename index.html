@@ -1,0 +1,45 @@
+<!-- New index.html to match your updated setup flow -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holiday Cluedo - Setup</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <h1>Holiday Cluedo - Setup</h1>
+
+  <!-- Step 1: Player Count -->
+  <div id="player-count-screen">
+    <p>How many players are playing?</p>
+    <input type="number" id="player-count-input" min="3" placeholder="Minimum 3 players" />
+    <button onclick="confirmPlayerCount()">Confirm</button>
+  </div>
+
+  <!-- Step 2: Weapon Selection -->
+  <div id="weapons-screen" style="display:none;">
+    <h2>Choose Weapons</h2>
+    <p>Type in weapons to be used in the game</p>
+    <div id="weapon-inputs"></div>
+    <button onclick="confirmWeapons()">Confirm Weapons</button>
+  </div>
+
+  <!-- Step 3: Location Selection -->
+  <div id="locations-screen" style="display:none;">
+    <h2>Choose Locations</h2>
+    <p>Type in locations to be used in the game</p>
+    <div id="location-inputs"></div>
+    <button onclick="confirmLocations()">Confirm Locations</button>
+  </div>
+
+  <!-- Step 4: Player Names Entry -->
+  <div id="player-names-screen" style="display:none;">
+    <h2>Enter Player Names</h2>
+    <div id="player-name-inputs"></div>
+    <button onclick="confirmPlayerNames()">Start Game</button>
+  </div>
+
+  <script src="scripts/setup.js"></script>
+</body>
+</html>
