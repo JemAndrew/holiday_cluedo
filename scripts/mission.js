@@ -1,40 +1,52 @@
-// missions.js (Handles private mission reveal flow)
+// mission.js - Handles the secret assignment display per player
 
 let players = JSON.parse(localStorage.getItem("holidayCluedoPlayers")) || [];
-let currentMissionIndex = 0;
-let stage = "pass"; // "pass" or "reveal"
+let weapons = JSON.parse(localStorage.getItem("holidayCluedoWeapons")) || [];
+let locations = JSON.parse(localStorage.getItem("holidayCluedoLocations")) || [];
 
-function loadMission() {
-  if (currentMissionIndex >= players.length) {
-    window.location.href = "game.html";
+let currentPlayerIndex = 0;
+
+window.onload = () => {
+  const revealButton = document.getElementById("reveal-button");
+  const missionConfirmButton = document.getElementById("mission-confirm-button");
+
+  if (!players.length || !weapons.length || !locations.length) {
+    document.body.innerHTML = "<h2>Mission data missing. Please restart the game from the beginning.</h2>";
     return;
   }
 
-  const instructionText = document.getElementById("instruction-text");
-  const missionDetails = document.getElementById("mission-details");
-  const currentPlayer = players[currentMissionIndex];
+  revealButton.addEventListener("click", () => {
+    revealMission();
+  });
 
-  if (stage === "pass") {
-    instructionText.textContent = `Pass the phone to ${currentPlayer.name}.`;
-    missionDetails.style.display = "none";
-  } else if (stage === "reveal") {
-    instructionText.textContent = `Mission for ${currentPlayer.name}`;
-    document.getElementById("target-name").textContent = currentPlayer.target;
-    document.getElementById("target-weapon").textContent = currentPlayer.weapon;
-    document.getElementById("target-location").textContent = currentPlayer.location;
-    missionDetails.style.display = "block";
-  }
+  missionConfirmButton.addEventListener("click", () => {
+    currentPlayerIndex++;
+
+    if (currentPlayerIndex >= players.length) {
+      document.body.innerHTML = `<h1>GAME WON 🎉</h1><p>Well done, ${players[players.length - 1].name}!</p><button onclick='location.href="index.html"'>Restart Game</button>`;
+    } else {
+      prepareNextPlayer();
+    }
+  });
+
+  prepareNextPlayer();
+};
+
+function prepareNextPlayer() {
+  document.getElementById("mission-details").style.display = "none";
+  document.getElementById("instructions").style.display = "block";
+  document.getElementById("pass-instruction").textContent = `Pass the phone to ${players[currentPlayerIndex].name}`;
 }
 
-function handleConfirm() {
-  if (stage === "pass") {
-    stage = "reveal";
-    loadMission();
-  } else if (stage === "reveal") {
-    stage = "pass";
-    currentMissionIndex++;
-    loadMission();
-  }
-}
+function revealMission() {
+  const player = players[currentPlayerIndex];
+  const weapon = weapons[currentPlayerIndex];
+  const location = locations[currentPlayerIndex];
 
-window.onload = loadMission;
+  document.getElementById("target-name").textContent = player.target;
+  document.getElementById("target-weapon").textContent = weapon;
+  document.getElementById("target-location").textContent = location;
+
+  document.getElementById("instructions").style.display = "none";
+  document.getElementById("mission-details").style.display = "block";
+}
