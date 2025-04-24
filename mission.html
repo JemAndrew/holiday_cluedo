@@ -1,26 +1,28 @@
-<!-- mission.html (Private mission briefing page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Holiday Cluedo - Mission Briefing</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mission Briefing</title>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <h1>Holiday Cluedo - Mission Briefing</h1>
-
   <div id="mission-container">
-    <p id="instruction-text">Loading...</p>
-    <div id="mission-details" style="display:none; margin-top: 20px;">
-      <p><strong>Your Target:</strong> <span id="target-name"></span></p>
-      <p><strong>Weapon:</strong> <span id="target-weapon"></span></p>
-      <p><strong>Location:</strong> <span id="target-location"></span></p>
+    <h1>MISSION BRIEFING</h1>
+    <div id="instructions">
+      <p id="pass-instruction"></p>
+      <button id="reveal-button">Confirm</button>
     </div>
 
-    <button onclick="handleConfirm()" style="margin-top:20px;">Confirm</button>
+    <div id="mission-details" style="display: none;">
+      <h2>Your Target:</h2>
+      <p><strong>Name:</strong> <span id="target-name"></span></p>
+      <p><strong>With:</strong> <span id="target-weapon"></span></p>
+      <p><strong>At:</strong> <span id="target-location"></span></p>
+      <button id="mission-confirm-button">Confirm & Pass Phone</button>
+    </div>
   </div>
 
-  <script src="mission.js"></script>
+  <script src="scripts/mission.js"></script>
 </body>
 </html>
