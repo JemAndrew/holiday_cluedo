@@ -1,6 +1,4 @@
-/* Cluedo-themed Holiday Cluedo Design */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Chiller&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Reset and base styles */
 * {
@@ -11,19 +9,15 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  /* Multiple background options - browser will use the first one that works */
+  /* Dark bloody gradient background */
   background: 
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('https://images.unsplash.com/photo-1564540574859-0dfb63293365?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'),
-    url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80'),
-    url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=2089&q=80'),
-    linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #2c3e50 50%, #1a252f 75%, #2c3e50 100%);
-  background-image: url('https://images.unsplash.com/photo-1520637836862-4d197d17c93a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80');
-  background-size: cover, cover, cover, cover, 100% 100%;
-  background-position: center;
+    radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.9) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(75, 0, 130, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(139, 0, 0, 0.7) 0%, transparent 50%),
+    linear-gradient(135deg, #0f0f23 0%, #1a0000 25%, #2d1b69 50%, #1a0000 75%, #0f0f23 100%);
+  background-size: 800px 800px, 600px 600px, 400px 400px, 100% 100%;
   background-attachment: fixed;
-  background-repeat: no-repeat;
-  color: #2d3748;
+  color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,9 +26,19 @@ body {
   padding: 20px;
   position: relative;
   overflow-x: hidden;
+  animation: bloodPulse 8s ease-in-out infinite;
 }
 
-/* Dark overlay for better readability */
+@keyframes bloodPulse {
+  0%, 100% { 
+    background-size: 800px 800px, 600px 600px, 400px 400px, 100% 100%;
+  }
+  50% { 
+    background-size: 900px 900px, 700px 700px, 500px 500px, 100% 100%;
+  }
+}
+
+/* Animated blood drops */
 body::before {
   content: '';
   position: fixed;
@@ -42,11 +46,34 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background-image: 
+    radial-gradient(circle at 15% 25%, rgba(139, 0, 0, 0.6) 2px, transparent 3px),
+    radial-gradient(circle at 85% 15%, rgba(139, 0, 0, 0.4) 1px, transparent 2px),
+    radial-gradient(circle at 45% 75%, rgba(139, 0, 0, 0.5) 1.5px, transparent 2.5px),
+    radial-gradient(circle at 75% 85%, rgba(139, 0, 0, 0.3) 1px, transparent 2px),
+    radial-gradient(circle at 25% 55%, rgba(139, 0, 0, 0.4) 2px, transparent 3px);
+  background-size: 400px 400px, 300px 300px, 500px 500px, 250px 250px, 350px 350px;
+  animation: bloodFloat 15s ease-in-out infinite;
+  pointer-events: none;
   z-index: -1;
 }
 
-/* Mystery particles effect */
+@keyframes bloodFloat {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    opacity: 0.6;
+  }
+  33% { 
+    transform: translateY(-20px) scale(1.1);
+    opacity: 0.8;
+  }
+  66% { 
+    transform: translateY(-10px) scale(0.9);
+    opacity: 0.4;
+  }
+}
+
+/* Flickering shadows */
 body::after {
   content: '';
   position: fixed;
@@ -54,49 +81,53 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 40% 20%, rgba(220, 20, 60, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
-  background-size: 300px 300px, 250px 250px, 400px 400px, 200px 200px;
-  animation: mysterFloat 25s ease-in-out infinite;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(0, 0, 0, 0.3) 31%, rgba(0, 0, 0, 0.3) 32%, transparent 33%),
+    linear-gradient(-45deg, transparent 30%, rgba(0, 0, 0, 0.2) 31%, rgba(0, 0, 0, 0.2) 32%, transparent 33%);
+  background-size: 100px 100px, 150px 150px;
+  animation: shadowFlicker 3s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: -1;
 }
 
-@keyframes mysterFloat {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-15px) rotate(120deg); }
-  66% { transform: translateY(-30px) rotate(240deg); }
+@keyframes shadowFlicker {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
 }
 
-/* Main heading - Cluedo style */
+/* Main heading - Horror style */
 h1 {
+  font-family: 'Nosifer', cursive;
   font-size: 3.5rem;
-  font-weight: 700;
-  color: #ffd700;
+  font-weight: 400;
+  color: #ff0000;
   text-align: center;
   margin-bottom: 30px;
   text-shadow: 
-    2px 2px 4px rgba(0, 0, 0, 0.8),
-    0 0 20px rgba(255, 215, 0, 0.6);
-  animation: mysteryGlow 3s ease-in-out infinite alternate;
-  font-family: serif;
-  letter-spacing: 2px;
+    0 0 10px #ff0000,
+    0 0 20px #ff0000,
+    0 0 30px #ff0000,
+    2px 2px 4px #000000;
+  animation: bloodGlow 2s ease-in-out infinite alternate;
+  letter-spacing: 3px;
+  filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
 }
 
-@keyframes mysteryGlow {
+@keyframes bloodGlow {
   from { 
     text-shadow: 
-      2px 2px 4px rgba(0, 0, 0, 0.8),
-      0 0 20px rgba(255, 215, 0, 0.6);
+      0 0 10px #ff0000,
+      0 0 20px #ff0000,
+      0 0 30px #ff0000,
+      2px 2px 4px #000000;
   }
   to { 
     text-shadow: 
-      2px 2px 4px rgba(0, 0, 0, 0.8),
-      0 0 30px rgba(255, 215, 0, 0.9),
-      0 0 40px rgba(255, 215, 0, 0.4);
+      0 0 15px #ff0000,
+      0 0 30px #ff0000,
+      0 0 45px #ff0000,
+      0 0 60px #8b0000,
+      2px 2px 4px #000000;
   }
 }
 
@@ -108,7 +139,7 @@ h1 {
   margin: 0 auto;
 }
 
-/* Card-based containers with Cluedo theming */
+/* Card-based containers - Dark bloody theme */
 #player-count-screen,
 #player-names-screen,
 #weapons-screen,
@@ -118,21 +149,23 @@ h1 {
 .celebration-screen,
 .update-screen,
 .victory-screen {
-  background: rgba(139, 69, 19, 0.95);
-  backdrop-filter: blur(15px);
+  background: 
+    linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 0, 0, 0.95) 100%);
+  backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 40px;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 215, 0, 0.3),
-    0 0 0 2px rgba(139, 69, 19, 0.8);
-  border: 2px solid #8b4513;
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(139, 0, 0, 0.5),
+    0 0 0 2px rgba(139, 0, 0, 0.3),
+    0 0 20px rgba(139, 0, 0, 0.4);
+  border: 2px solid #8b0000;
   margin-bottom: 20px;
-  animation: slideInUp 0.6s ease-out;
+  animation: cardSlideIn 0.8s ease-out;
   position: relative;
 }
 
-/* Decorative corners for cards */
+/* Blood drip decorative elements */
 #player-count-screen::before,
 #player-names-screen::before,
 #weapons-screen::before,
@@ -142,96 +175,115 @@ h1 {
 .celebration-screen::before,
 .update-screen::before,
 .victory-screen::before {
-  content: '🔍';
+  content: '🩸';
   position: absolute;
   top: 15px;
   right: 15px;
   font-size: 1.5rem;
-  opacity: 0.7;
+  animation: bloodDrip 3s ease-in-out infinite;
 }
 
-@keyframes slideInUp {
+@keyframes bloodDrip {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes cardSlideIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Typography */
+/* Typography - Horror fonts */
 h2 {
+  font-family: 'Creepster', cursive;
   font-size: 1.8rem;
-  font-weight: 600;
-  color: #ffd700;
+  font-weight: 400;
+  color: #ff4444;
   margin-bottom: 20px;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  font-family: serif;
+  text-shadow: 
+    0 0 10px #ff0000,
+    2px 2px 4px #000000;
+  letter-spacing: 2px;
 }
 
 p {
   font-size: 1.1rem;
-  color: #f7fafc;
+  color: #cccccc;
   margin-bottom: 15px;
   line-height: 1.6;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 label {
   display: block;
   font-weight: 500;
-  color: #ffd700;
+  color: #ff6666;
   margin-bottom: 8px;
   font-size: 0.95rem;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }
 
-/* Input fields - Cluedo style */
+/* Input fields - Dark bloody style */
 input[type="text"],
 input[type="number"] {
   width: 100%;
   padding: 16px 20px;
-  border: 2px solid #8b4513;
+  border: 2px solid #8b0000;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(20, 20, 20, 0.9);
+  color: #ffffff;
   transition: all 0.3s ease;
   margin-bottom: 15px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(139, 0, 0, 0.2);
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus {
-  border-color: #ffd700;
+  border-color: #ff0000;
   outline: none;
   box-shadow: 
-    0 0 0 3px rgba(255, 215, 0, 0.3),
-    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    0 0 0 3px rgba(255, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 0, 0, 0.4);
   transform: translateY(-2px);
 }
 
-/* Buttons - Mystery/Detective style */
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: #888888;
+}
+
+/* Buttons - Bloody murder style */
 button {
   width: 100%;
   padding: 16px 24px;
-  background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #8b4513 100%);
-  color: #ffd700;
-  border: 2px solid #ffd700;
+  background: linear-gradient(135deg, #8b0000 0%, #ff0000 50%, #8b0000 100%);
+  color: #ffffff;
+  border: 2px solid #ff0000;
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
-  font-family: serif;
+  font-family: 'Poppins', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 10px 0;
   position: relative;
   overflow: hidden;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(255, 0, 0, 0.3);
 }
 
 button::before {
@@ -241,7 +293,7 @@ button::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
 }
 
@@ -251,47 +303,51 @@ button:hover::before {
 
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-  background: linear-gradient(135deg, #a0522d 0%, #d2691e 50%, #a0522d 100%);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(255, 0, 0, 0.6);
+  background: linear-gradient(135deg, #a00000 0%, #ff3333 50%, #a00000 100%);
 }
 
-/* Mission details - Confidential document style */
+/* Mission details - Bloody document style */
 .mission-details {
-  background: rgba(255, 248, 220, 0.95);
+  background: rgba(40, 0, 0, 0.95);
   padding: 25px;
   border-radius: 10px;
   margin: 25px 0;
-  border: 2px solid #8b4513;
-  border-left: 5px solid #dc143c;
+  border: 2px solid #8b0000;
+  border-left: 5px solid #ff0000;
   box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.1),
-    0 4px 15px rgba(0, 0, 0, 0.2);
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 15px rgba(0, 0, 0, 0.6),
+    0 0 10px rgba(255, 0, 0, 0.3);
   position: relative;
 }
 
 .mission-details::before {
-  content: '📋 CONFIDENTIAL';
+  content: '🔪 KILL ORDER';
   position: absolute;
   top: -10px;
   left: 20px;
-  background: #dc143c;
-  color: white;
+  background: #8b0000;
+  color: #ffffff;
   padding: 4px 12px;
   font-size: 0.8rem;
   font-weight: bold;
   border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .mission-details p {
   margin: 12px 0;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #2d3748;
-  text-shadow: none;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .mission-details strong {
-  color: #8b4513;
+  color: #ff6666;
   font-weight: 600;
 }
 
@@ -307,41 +363,47 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 248, 220, 0.95);
+  background: rgba(20, 20, 20, 0.95);
   padding: 20px 25px;
   border-radius: 10px;
-  border: 2px solid #8b4513;
+  border: 2px solid #8b0000;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.6),
+    0 0 10px rgba(139, 0, 0, 0.2);
 }
 
 .player-card:hover {
-  border-color: #ffd700;
+  border-color: #ff0000;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(255, 0, 0, 0.4);
 }
 
 .player-name {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #2d3748;
+  color: #ffffff;
   flex: 1;
   text-align: left;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .health-indicator {
   font-size: 1rem;
   margin: 0 15px;
   padding: 6px 12px;
-  background: #228b22;
+  background: #006400;
   color: white;
   border-radius: 15px;
   font-weight: 500;
   font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .dead-btn {
-  background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
+  background: linear-gradient(135deg, #4a0000 0%, #8b0000 100%);
   border-color: #8b0000;
   padding: 10px 20px;
   font-size: 0.95rem;
@@ -351,62 +413,75 @@ button:hover {
 }
 
 .dead-btn:hover {
-  background: linear-gradient(135deg, #a0522d 0%, #ff6347 100%);
-  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+  background: linear-gradient(135deg, #6a0000 0%, #a00000 100%);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(139, 0, 0, 0.6);
 }
 
-/* Victory screen - SIMPLIFIED */
+/* Victory screen - BLOOD RED */
 .victory-screen {
-  background: rgba(255, 215, 0, 0.95);
-  border: 3px solid #8b4513;
+  background: 
+    radial-gradient(circle at center, rgba(139, 0, 0, 0.95) 0%, rgba(60, 0, 0, 0.95) 100%);
+  border: 3px solid #ff0000;
   text-align: center;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    inset 0 0 30px rgba(139, 69, 19, 0.3);
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    inset 0 0 30px rgba(255, 0, 0, 0.3),
+    0 0 30px rgba(255, 0, 0, 0.6);
 }
 
 .victory-screen h2 {
-  color: #8b4513;
+  font-family: 'Nosifer', cursive;
+  color: #ffffff;
   font-size: 3rem;
   margin-bottom: 20px;
-  font-family: serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 
+    0 0 20px #ff0000,
+    2px 2px 4px #000000;
+  animation: victoryPulse 2s ease-in-out infinite;
+}
+
+@keyframes victoryPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .victory-screen p {
-  color: #8b4513;
+  color: #ffffff;
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 15px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Celebration screen */
+/* Celebration and update screens */
 .celebration-screen {
-  background: rgba(255, 69, 0, 0.95);
-  border: 2px solid #8b4513;
+  background: rgba(139, 69, 19, 0.95);
+  border: 2px solid #8b0000;
   text-align: center;
 }
 
 .celebration-screen h2 {
-  color: #fff;
+  color: #ff6666;
   font-size: 2.2rem;
   margin-bottom: 20px;
 }
 
 .celebration-screen p {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.3rem;
   font-weight: 500;
 }
 
 .update-screen {
-  background: rgba(70, 130, 180, 0.95);
-  border: 2px solid #8b4513;
+  background: rgba(70, 130, 180, 0.2);
+  background: rgba(40, 0, 40, 0.95);
+  border: 2px solid #8b0000;
 }
 
 .update-screen h2 {
-  color: #fff;
+  color: #ff6666;
   margin-bottom: 20px;
 }
 
