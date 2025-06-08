@@ -1,207 +1,222 @@
-/* Reset default browser styling */
+/* Modern Holiday Cluedo Design - Replace your entire assets/style.css with this */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #FFDEE9, #B5FFFC);
-    color: #333;
-    text-align: center;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  h1 {
-    margin-bottom: 20px;
-    color: #FF4081;
-    font-size: 2.2rem;
-  }
-  
-  p {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-  }
-  
-  input[type="text"],
-  input[type="number"] {
-    padding: 10px;
-    width: 100%;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    transition: border-color 0.3s;
-  }
-  
-  input[type="text"]:focus,
-  input[type="number"]:focus {
-    border-color: #FF4081;
-    outline: none;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    width: 100%;
-    text-align: left;
-    padding-left: 5px;
-  }
-  
-  button {
-    padding: 12px 24px;
-    margin: 10px 0;
-    background-color: #00C9A7;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  button:hover {
-    background-color: #00b08a;
-    transform: translateY(-2px);
-  }
-  
-  /* Player setup container */
-  #player-setup-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  #player-count-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .player-entry {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    flex-wrap: wrap;
-  }
-  
-  .remove-player {
-    background-color: #ff4d4d;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    font-size: 18px;
-  }
-  
-  .remove-player:hover {
-    background-color: #cc0000;
-  }
-  
-  /* Shared container styling */
-  #game-container,
-  #update-container,
-  #mission-container {
-    margin-top: 20px;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-  }
-  
-  /* Victory message styling */
-  #victory-message {
-    margin-top: 20px;
-    background: #d4edda;
-    color: #155724;
-    padding: 20px;
-    border-radius: 15px;
-    border: 2px solid #c3e6cb;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  strong {
-    font-size: 1.2rem;
-  }
-  
-  @media (max-width: 500px) {
-    input[type="text"],
-    input[type="number"],
-    button {
-      width: 100%;
-    }
-  
-    .player-entry {
-      flex-direction: column;
-    }
-  
-    #game-container,
-    #update-container,
-    #mission-container {
-      padding: 15px;
-    }
-   /* Additional styles for Holiday Cluedo - ADD TO YOUR EXISTING assets/style.css */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-   
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #2d3748;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
 
-/* Briefing screens */
+/* Animated background particles */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 200px 200px, 300px 300px, 250px 250px, 180px 180px;
+  animation: floatParticles 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatParticles {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Main heading */
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+  to { text-shadow: 0 4px 30px rgba(255, 255, 255, 0.4); }
+}
+
+/* Container styles */
+#setup-container,
+#game-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Card-based containers */
+#player-count-screen,
+#player-names-screen,
+#weapons-screen,
+#locations-screen,
 .briefing-screen,
 .game-on-screen,
 .celebration-screen,
 .update-screen,
 .victory-screen {
-  text-align: center;
-  width: 100%;
-  max-width: 450px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+  animation: slideInUp 0.6s ease-out;
 }
 
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typography */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #718096;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: #a0aec0;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+/* Mission details */
 .mission-details {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px 0;
-  border-left: 4px solid #00C9A7;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  padding: 25px;
+  border-radius: 15px;
+  margin: 25px 0;
+  border-left: 5px solid #667eea;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .mission-details p {
-  margin: 10px 0;
+  margin: 12px 0;
   font-size: 1.1rem;
-  text-align: left;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.mission-details strong {
+  color: #4a5568;
+  font-weight: 600;
 }
 
 /* Game On screen */
@@ -209,28 +224,31 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .player-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f8f9fa;
-  padding: 15px 20px;
-  border-radius: 10px;
-  border: 2px solid #e9ecef;
-  transition: border-color 0.3s;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding: 20px 25px;
+  border-radius: 15px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .player-card:hover {
-  border-color: #00C9A7;
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
 }
 
 .player-name {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #333;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #2d3748;
   flex: 1;
   text-align: left;
 }
@@ -238,92 +256,100 @@
 .health-indicator {
   font-size: 1rem;
   margin: 0 15px;
-  color: #28a745;
+  padding: 6px 12px;
+  background: #48bb78;
+  color: white;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .dead-btn {
-  background-color: #dc3545;
-  padding: 8px 16px;
-  font-size: 14px;
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  padding: 10px 20px;
+  font-size: 0.95rem;
   width: auto;
+  min-width: 80px;
   margin: 0;
-  min-width: 70px;
 }
 
 .dead-btn:hover {
-  background-color: #c82333;
+  background: linear-gradient(135deg, #c53030 0%, #9c2626 100%);
+  box-shadow: 0 6px 20px rgba(197, 48, 48, 0.4);
 }
 
-/* Celebration screen */
+/* Special screens */
 .celebration-screen {
-  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-  padding: 30px;
-  border-radius: 15px;
-  border: 2px solid #ffc107;
+  background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
+  border: 2px solid #f6ad55;
+  text-align: center;
 }
 
 .celebration-screen h2 {
-  color: #856404;
-  font-size: 2rem;
+  color: #c05621;
+  font-size: 2.2rem;
   margin-bottom: 20px;
 }
 
 .celebration-screen p {
-  color: #856404;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  color: #c05621;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
-/* Victory screen */
 .victory-screen {
-  background: linear-gradient(135deg, #d4edda, #c3e6cb);
-  padding: 30px;
-  border-radius: 15px;
-  border: 2px solid #28a745;
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+  border: 2px solid #48bb78;
+  text-align: center;
 }
 
 .victory-screen h2 {
-  color: #155724;
+  color: #22543d;
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
 .victory-screen p {
-  color: #155724;
+  color: #22543d;
   font-size: 1.3rem;
-  margin-bottom: 15px;
+  font-weight: 500;
 }
 
-/* Update screen */
 .update-screen {
-  background: linear-gradient(135deg, #d1ecf1, #bee5eb);
-  padding: 25px;
-  border-radius: 15px;
-  border: 2px solid #17a2b8;
+  background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+  border: 2px solid #3182ce;
 }
 
 .update-screen h2 {
-  color: #0c5460;
+  color: #2a4365;
   margin-bottom: 20px;
 }
 
-/* Game phase specific styling */
-.game-on-screen h2 {
-  color: #FF4081;
-  margin-bottom: 20px;
-  font-size: 2rem;
-}
-
-.briefing-screen h2 {
-  color: #FF4081;
-  margin-bottom: 20px;
-}
-
-/* Mobile responsiveness */
+/* Responsive design */
 @media (max-width: 500px) {
+  body {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  #player-count-screen,
+  #player-names-screen,
+  #weapons-screen,
+  #locations-screen,
+  .briefing-screen,
+  .game-on-screen,
+  .celebration-screen,
+  .update-screen,
+  .victory-screen {
+    padding: 25px;
+  }
+  
   .player-card {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     text-align: center;
   }
   
@@ -339,10 +365,14 @@
   .celebration-screen h2 {
     font-size: 1.8rem;
   }
-  
-  .game-on-screen h2 {
-    font-size: 1.5rem;
-  }
 }
+
+/* Loading animation for transitions */
+.loading {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
-  
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
