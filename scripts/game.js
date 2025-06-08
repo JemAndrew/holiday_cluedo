@@ -89,9 +89,8 @@ function renderVictoryPhase(container) {
   const winner = players[0];
   container.innerHTML = `
     <div class="victory-screen">
-      <h2>🎉 VICTORY! 🎉</h2>
-      <p><strong>${winner.name}</strong> is the last player standing!</p>
-      <p>You have mastered the art of Holiday Cluedo!</p>
+      <h2>VICTORY</h2>
+      <p>${winner.name}</p>
       <button onclick="restartGame()">Play Again</button>
     </div>
   `;

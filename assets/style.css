@@ -1,4 +1,4 @@
-/* Modern Holiday Cluedo Design - Replace your entire assets/style.css with this */
+/* Cluedo-themed Holiday Cluedo Design */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -11,7 +11,11 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Cluedo mansion background */
+  background-image: url('https://images.unsplash.com/photo-1520637836862-4d197d17c93a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: #2d3748;
   min-height: 100vh;
   display: flex;
@@ -23,7 +27,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Animated background particles */
+/* Dark overlay for better readability */
 body::before {
   content: '';
   position: fixed;
@@ -31,36 +35,62 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* Mystery particles effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 40% 20%, rgba(220, 20, 60, 0.08) 1px, transparent 1px),
     radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 200px 200px, 300px 300px, 250px 250px, 180px 180px;
-  animation: floatParticles 20s ease-in-out infinite;
+    radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+  background-size: 300px 300px, 250px 250px, 400px 400px, 200px 200px;
+  animation: mysterFloat 25s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
 }
 
-@keyframes floatParticles {
+@keyframes mysterFloat {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
+  33% { transform: translateY(-15px) rotate(120deg); }
+  66% { transform: translateY(-30px) rotate(240deg); }
 }
 
-/* Main heading */
+/* Main heading - Cluedo style */
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #ffd700;
   text-align: center;
   margin-bottom: 30px;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  animation: glow 2s ease-in-out infinite alternate;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(255, 215, 0, 0.6);
+  animation: mysteryGlow 3s ease-in-out infinite alternate;
+  font-family: serif;
+  letter-spacing: 2px;
 }
 
-@keyframes glow {
-  from { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
-  to { text-shadow: 0 4px 30px rgba(255, 255, 255, 0.4); }
+@keyframes mysteryGlow {
+  from { 
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.6);
+  }
+  to { 
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.8),
+      0 0 30px rgba(255, 215, 0, 0.9),
+      0 0 40px rgba(255, 215, 0, 0.4);
+  }
 }
 
 /* Container styles */
@@ -71,7 +101,7 @@ h1 {
   margin: 0 auto;
 }
 
-/* Card-based containers */
+/* Card-based containers with Cluedo theming */
 #player-count-screen,
 #player-names-screen,
 #weapons-screen,
@@ -81,16 +111,36 @@ h1 {
 .celebration-screen,
 .update-screen,
 .victory-screen {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
+  background: rgba(139, 69, 19, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
   padding: 40px;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 215, 0, 0.3),
+    0 0 0 2px rgba(139, 69, 19, 0.8);
+  border: 2px solid #8b4513;
   margin-bottom: 20px;
   animation: slideInUp 0.6s ease-out;
+  position: relative;
+}
+
+/* Decorative corners for cards */
+#player-count-screen::before,
+#player-names-screen::before,
+#weapons-screen::before,
+#locations-screen::before,
+.briefing-screen::before,
+.game-on-screen::before,
+.celebration-screen::before,
+.update-screen::before,
+.victory-screen::before {
+  content: '🔍';
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  opacity: 0.7;
 }
 
 @keyframes slideInUp {
@@ -108,69 +158,73 @@ h1 {
 h2 {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #4a5568;
+  color: #ffd700;
   margin-bottom: 20px;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-family: serif;
 }
 
 p {
   font-size: 1.1rem;
-  color: #718096;
+  color: #f7fafc;
   margin-bottom: 15px;
   line-height: 1.6;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 label {
   display: block;
   font-weight: 500;
-  color: #4a5568;
+  color: #ffd700;
   margin-bottom: 8px;
   font-size: 0.95rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-/* Input fields */
+/* Input fields - Cluedo style */
 input[type="text"],
 input[type="number"] {
   width: 100%;
   padding: 16px 20px;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
+  border: 2px solid #8b4513;
+  border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
   transition: all 0.3s ease;
   margin-bottom: 15px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus {
-  border-color: #667eea;
+  border-color: #ffd700;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 
+    0 0 0 3px rgba(255, 215, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
 
-input[type="text"]::placeholder,
-input[type="number"]::placeholder {
-  color: #a0aec0;
-}
-
-/* Buttons */
+/* Buttons - Mystery/Detective style */
 button {
   width: 100%;
   padding: 16px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #8b4513 100%);
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
-  font-family: inherit;
+  font-family: serif;
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 10px 0;
   position: relative;
   overflow: hidden;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 button::before {
@@ -180,7 +234,7 @@ button::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
   transition: left 0.5s;
 }
 
@@ -190,21 +244,35 @@ button:hover::before {
 
 button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, #a0522d 0%, #d2691e 50%, #a0522d 100%);
 }
 
-button:active {
-  transform: translateY(-1px);
-}
-
-/* Mission details */
+/* Mission details - Confidential document style */
 .mission-details {
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: rgba(255, 248, 220, 0.95);
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 10px;
   margin: 25px 0;
-  border-left: 5px solid #667eea;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  border: 2px solid #8b4513;
+  border-left: 5px solid #dc143c;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.mission-details::before {
+  content: '📋 CONFIDENTIAL';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: #dc143c;
+  color: white;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 4px;
 }
 
 .mission-details p {
@@ -212,10 +280,11 @@ button:active {
   font-size: 1.1rem;
   font-weight: 500;
   color: #2d3748;
+  text-shadow: none;
 }
 
 .mission-details strong {
-  color: #4a5568;
+  color: #8b4513;
   font-weight: 600;
 }
 
@@ -231,18 +300,18 @@ button:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  background: rgba(255, 248, 220, 0.95);
   padding: 20px 25px;
-  border-radius: 15px;
-  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  border: 2px solid #8b4513;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .player-card:hover {
-  border-color: #667eea;
+  border-color: #ffd700;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
 }
 
 .player-name {
@@ -257,15 +326,16 @@ button:active {
   font-size: 1rem;
   margin: 0 15px;
   padding: 6px 12px;
-  background: #48bb78;
+  background: #228b22;
   color: white;
-  border-radius: 20px;
+  border-radius: 15px;
   font-weight: 500;
   font-size: 0.9rem;
 }
 
 .dead-btn {
-  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
+  border-color: #8b0000;
   padding: 10px 20px;
   font-size: 0.95rem;
   width: auto;
@@ -274,54 +344,62 @@ button:active {
 }
 
 .dead-btn:hover {
-  background: linear-gradient(135deg, #c53030 0%, #9c2626 100%);
-  box-shadow: 0 6px 20px rgba(197, 48, 48, 0.4);
+  background: linear-gradient(135deg, #a0522d 0%, #ff6347 100%);
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
 }
 
-/* Special screens */
+/* Victory screen - SIMPLIFIED */
+.victory-screen {
+  background: rgba(255, 215, 0, 0.95);
+  border: 3px solid #8b4513;
+  text-align: center;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 0 30px rgba(139, 69, 19, 0.3);
+}
+
+.victory-screen h2 {
+  color: #8b4513;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-family: serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.victory-screen p {
+  color: #8b4513;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Celebration screen */
 .celebration-screen {
-  background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
-  border: 2px solid #f6ad55;
+  background: rgba(255, 69, 0, 0.95);
+  border: 2px solid #8b4513;
   text-align: center;
 }
 
 .celebration-screen h2 {
-  color: #c05621;
+  color: #fff;
   font-size: 2.2rem;
   margin-bottom: 20px;
 }
 
 .celebration-screen p {
-  color: #c05621;
-  font-size: 1.3rem;
-  font-weight: 500;
-}
-
-.victory-screen {
-  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
-  border: 2px solid #48bb78;
-  text-align: center;
-}
-
-.victory-screen h2 {
-  color: #22543d;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.victory-screen p {
-  color: #22543d;
+  color: #fff;
   font-size: 1.3rem;
   font-weight: 500;
 }
 
 .update-screen {
-  background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
-  border: 2px solid #3182ce;
+  background: rgba(70, 130, 180, 0.95);
+  border: 2px solid #8b4513;
 }
 
 .update-screen h2 {
-  color: #2a4365;
+  color: #fff;
   margin-bottom: 20px;
 }
 
@@ -332,7 +410,7 @@ button:active {
   }
   
   h1 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
   
   #player-count-screen,
@@ -361,18 +439,11 @@ button:active {
     width: 100%;
   }
   
-  .victory-screen h2,
-  .celebration-screen h2 {
-    font-size: 1.8rem;
+  .victory-screen h2 {
+    font-size: 2.2rem;
   }
-}
-
-/* Loading animation for transitions */
-.loading {
-  opacity: 0;
-  animation: fadeIn 0.5s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
+  
+  .victory-screen p {
+    font-size: 1.4rem;
+  }
 }
