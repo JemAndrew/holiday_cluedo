@@ -11,11 +11,17 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  /* Cluedo mansion background */
-  background-image: url('https://images.unsplash.com/photo-1520637836862-4d197d17c93a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
-  background-size: cover;
+  /* Multiple background options - browser will use the first one that works */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('https://images.unsplash.com/photo-1564540574859-0dfb63293365?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'),
+    url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2067&q=80'),
+    url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=2089&q=80'),
+    linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #2c3e50 50%, #1a252f 75%, #2c3e50 100%);
+  background-size: cover, cover, cover, cover, 100% 100%;
   background-position: center;
   background-attachment: fixed;
+  background-repeat: no-repeat;
   color: #2d3748;
   min-height: 100vh;
   display: flex;
