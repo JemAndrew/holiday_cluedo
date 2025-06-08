@@ -1,60 +1,44 @@
-<!-- index.html (Player Count + Secret Player Entry Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="manifest" href="manifest.json" />
-    <link rel="icon" href="static/logo.png" />
-    <meta name="theme-color" content="#FF4081" />
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('Service Worker Registered!'));
-      }
-    </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Holiday Cluedo - Player Setup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Holiday Cluedo - Setup</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <h1>Holiday Cluedo - Setup</h1>
+  <div id="setup-container">
+    <h1>Holiday Cluedo Setup</h1>
 
-  <div id="player-count-container">
-    <p>How many players are playing?</p>
-    <input type="number" id="player-count-input" min="3" placeholder="Enter number (min 3)" />
-    <button onclick="confirmPlayerCount()">Confirm</button>
+    <!-- Step 1: Player Count -->
+    <div id="player-count-screen">
+      <label for="player-count-input">How many players?</label><br>
+      <input type="number" id="player-count-input" min="3" placeholder="At least 3 players" />
+      <br><br>
+      <button onclick="confirmPlayerCount()">Confirm</button>
+    </div>
+
+    <!-- Step 2: Player Names -->
+    <div id="player-names-screen" style="display: none;">
+      <h2>Enter all player names</h2>
+      <div id="player-name-inputs"></div>
+      <button onclick="confirmPlayerNames()">Confirm Names</button>
+    </div>
+
+    <!-- Step 3: Weapons -->
+    <div id="weapons-screen" style="display: none;">
+      <h2>Enter weapons for the game</h2>
+      <div id="weapon-inputs"></div>
+      <button onclick="confirmWeapons()">Confirm Weapons</button>
+    </div>
+
+    <!-- Step 4: Locations -->
+    <div id="locations-screen" style="display: none;">
+      <h2>Enter locations for the game</h2>
+      <div id="location-inputs"></div>
+      <button onclick="confirmLocations()">Start Game</button>
+    </div>
   </div>
-
-  <div id="player-setup-container" style="display:none;">
-    <p id="player-count-text">Player 1: Enter your details</p>
-
-    <input type="text" placeholder="Your Name" id="player-name" />
-
-    <label for="player-weapon">Weapon:</label>
-    <input type="text" placeholder="Weapon" id="player-weapon" list="weapon-options" />
-
-    <label for="player-location">Location:</label>
-    <input type="text" placeholder="Location" id="player-location" list="location-options" />
-
-    <button onclick="submitPlayer()">Confirm</button>
-  </div>
-
-  <!-- Preset Options -->
-  <datalist id="weapon-options">
-    <option value="Pillow"></option>
-    <option value="Orange"></option>
-    <option value="Spoon"></option>
-    <option value="Cushion"></option>
-    <option value="Banana"></option>
-  </datalist>
-
-  <datalist id="location-options">
-    <option value="Restaurant"></option>
-    <option value="Beach"></option>
-    <option value="Garden"></option>
-    <option value="Pool"></option>
-    <option value="Balcony"></option>
-  </datalist>
 
   <script src="scripts/setup.js"></script>
 </body>

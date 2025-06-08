@@ -1,24 +1,19 @@
-// game.js - Complete game flow management
+// game.js - Complete game flow: Mission Briefing → Game On → Victory
 
 let players = JSON.parse(localStorage.getItem("holidayCluedoPlayers")) || [];
-let weapons = JSON.parse(localStorage.getItem("holidayCluedoWeapons")) || [];
-let locations = JSON.parse(localStorage.getItem("holidayCluedoLocations")) || [];
 
 // Game state management
-let gamePhase = "briefing"; // "briefing", "elimination", "victory"
+let gamePhase = "briefing"; // "briefing", "gameOn", "victory"
 let currentPlayerIndex = 0;
 let briefingStage = "pass"; // "pass" or "reveal"
 
 function initializeGame() {
-  // Assign weapons and locations to players
-  players.forEach((player, index) => {
-    player.weapon = weapons[index];
-    player.location = locations[index];
-  });
-  
-  // Save updated player data
-  localStorage.setItem("holidayCluedoPlayers", JSON.stringify(players));
-  
+  if (!players.length) {
+    alert("No player data found. Redirecting to setup...");
+    window.location.href = "index.html";
+    return;
+  }
+
   // Start with briefing phase
   gamePhase = "briefing";
   currentPlayerIndex = 0;
@@ -35,8 +30,8 @@ function renderCurrentPhase() {
     case "briefing":
       renderBriefingPhase(container);
       break;
-    case "elimination":
-      renderEliminationPhase(container);
+    case "gameOn":
+      renderGameOnPhase(container);
       break;
     case "victory":
       renderVictoryPhase(container);
@@ -72,16 +67,17 @@ function renderBriefingPhase(container) {
   }
 }
 
-function renderEliminationPhase(container) {
+function renderGameOnPhase(container) {
   container.innerHTML = `
-    <div class="elimination-screen">
-      <h2>Active Players</h2>
-      <p>Click "Eliminated" when a player has been successfully eliminated:</p>
+    <div class="game-on-screen">
+      <h2>🎯 GAME ON! 🎯</h2>
+      <p>Players click "Dead" next to your name when eliminated:</p>
       <div class="players-list">
         ${players.map(player => `
           <div class="player-card">
             <span class="player-name">${player.name}</span>
-            <button class="eliminate-btn" onclick="eliminatePlayer('${player.name}')">Eliminated</button>
+            <span class="health-indicator">💚 Alive</span>
+            <button class="dead-btn" onclick="playerDead('${player.name}')">Dead</button>
           </div>
         `).join('')}
       </div>
@@ -93,13 +89,15 @@ function renderVictoryPhase(container) {
   const winner = players[0];
   container.innerHTML = `
     <div class="victory-screen">
-      <h2>🎉 Victory! 🎉</h2>
+      <h2>🎉 VICTORY! 🎉</h2>
       <p><strong>${winner.name}</strong> is the last player standing!</p>
+      <p>You have mastered the art of Holiday Cluedo!</p>
       <button onclick="restartGame()">Play Again</button>
     </div>
   `;
 }
 
+// Mission briefing functions
 function showPlayerMission() {
   briefingStage = "reveal";
   renderCurrentPhase();
@@ -109,8 +107,8 @@ function completeBriefing() {
   currentPlayerIndex++;
   
   if (currentPlayerIndex >= players.length) {
-    // All players have been briefed - move to elimination phase
-    gamePhase = "elimination";
+    // All players have been briefed - move to Game On phase
+    gamePhase = "gameOn";
     renderCurrentPhase();
   } else {
     // Move to next player's briefing
@@ -119,13 +117,14 @@ function completeBriefing() {
   }
 }
 
-function eliminatePlayer(victimName) {
+// Game On phase functions
+function playerDead(victimName) {
   const victimIndex = players.findIndex(p => p.name === victimName);
   const victim = players[victimIndex];
   
   if (!victim) return;
 
-  // Find who had this victim as their target
+  // Find who had this victim as their target (the killer)
   const killerIndex = players.findIndex(p => p.target === victim.name);
   const killer = players[killerIndex];
 
@@ -153,58 +152,48 @@ function eliminatePlayer(victimName) {
   // Save updated game state
   localStorage.setItem("holidayCluedoPlayers", JSON.stringify(players));
 
-  // Show killer their updated mission
-  showKillerUpdate(killer);
+  // Show killer celebration
+  showKillerCelebration(killer.name, victimName);
 }
 
-function showKillerUpdate(killer) {
+function showKillerCelebration(killerName, victimName) {
   const container = document.getElementById("game-container");
   container.innerHTML = `
-    <div class="update-screen">
-      <h2>Mission Update</h2>
-      <p>Pass the phone to <strong>${killer.name}</strong></p>
-      <button onclick="revealKillerMission('${killer.name}')">Confirm</button>
+    <div class="celebration-screen">
+      <h2>🎯 ELIMINATION! 🎯</h2>
+      <p><strong>Congratulations for killing ${victimName}!</strong></p>
+      <p><strong>You have done well, ${killerName}!</strong></p>
+      <button onclick="showKillerUpdate('${killerName}')">Confirm</button>
     </div>
   `;
 }
 
-function revealKillerMission(killerName) {
+function showKillerUpdate(killerName) {
   const killer = players.find(p => p.name === killerName);
   const container = document.getElementById("game-container");
   
   container.innerHTML = `
     <div class="update-screen">
-      <h2>Your Updated Mission, ${killer.name}</h2>
+      <h2>Your Updated Mission, ${killerName}</h2>
       <div class="mission-details">
         <p><strong>New Target:</strong> ${killer.target}</p>
         <p><strong>Weapon:</strong> ${killer.weapon}</p>
         <p><strong>Location:</strong> ${killer.location}</p>
       </div>
-      <button onclick="returnToElimination()">Got it - Continue Game</button>
+      <button onclick="returnToGameOn()">Got it - Continue Game</button>
     </div>
   `;
 }
 
-function returnToElimination() {
-  gamePhase = "elimination";
+function returnToGameOn() {
+  gamePhase = "gameOn";
   renderCurrentPhase();
 }
 
 function restartGame() {
-  localStorage.removeItem("holidayCluedoPlayers");
-  localStorage.removeItem("holidayCluedoWeapons");
-  localStorage.removeItem("holidayCluedoLocations");
-  localStorage.removeItem("lastKiller");
+  localStorage.clear();
   window.location.href = "index.html";
 }
 
 // Initialize game when page loads
-window.onload = () => {
-  if (!players.length || !weapons.length || !locations.length) {
-    alert("Game data missing. Redirecting to setup...");
-    window.location.href = "index.html";
-    return;
-  }
-  
-  initializeGame();
-};
+window.onload = initializeGame;

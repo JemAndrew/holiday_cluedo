@@ -175,6 +175,174 @@
     #mission-container {
       padding: 15px;
     }
-    
+   /* Additional styles for Holiday Cluedo - ADD TO YOUR EXISTING assets/style.css */
+
+   
+
+/* Briefing screens */
+.briefing-screen,
+.game-on-screen,
+.celebration-screen,
+.update-screen,
+.victory-screen {
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+}
+
+.mission-details {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  border-left: 4px solid #00C9A7;
+}
+
+.mission-details p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+/* Game On screen */
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.player-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  transition: border-color 0.3s;
+}
+
+.player-card:hover {
+  border-color: #00C9A7;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+  flex: 1;
+  text-align: left;
+}
+
+.health-indicator {
+  font-size: 1rem;
+  margin: 0 15px;
+  color: #28a745;
+}
+
+.dead-btn {
+  background-color: #dc3545;
+  padding: 8px 16px;
+  font-size: 14px;
+  width: auto;
+  margin: 0;
+  min-width: 70px;
+}
+
+.dead-btn:hover {
+  background-color: #c82333;
+}
+
+/* Celebration screen */
+.celebration-screen {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #ffc107;
+}
+
+.celebration-screen h2 {
+  color: #856404;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.celebration-screen p {
+  color: #856404;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* Victory screen */
+.victory-screen {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #28a745;
+}
+
+.victory-screen h2 {
+  color: #155724;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.victory-screen p {
+  color: #155724;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+/* Update screen */
+.update-screen {
+  background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+  padding: 25px;
+  border-radius: 15px;
+  border: 2px solid #17a2b8;
+}
+
+.update-screen h2 {
+  color: #0c5460;
+  margin-bottom: 20px;
+}
+
+/* Game phase specific styling */
+.game-on-screen h2 {
+  color: #FF4081;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.briefing-screen h2 {
+  color: #FF4081;
+  margin-bottom: 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 500px) {
+  .player-card {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
+  
+  .player-name {
+    text-align: center;
+  }
+  
+  .dead-btn {
+    width: 100%;
+  }
+  
+  .victory-screen h2,
+  .celebration-screen h2 {
+    font-size: 1.8rem;
+  }
+  
+  .game-on-screen h2 {
+    font-size: 1.5rem;
+  }
+}
+}
   
